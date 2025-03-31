@@ -15,5 +15,5 @@ theme:
       gutter: 20px
 
 pages:
-  - path: /
-    api: user1-api
+- path: /
+  api: user1-api
