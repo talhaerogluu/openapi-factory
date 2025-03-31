@@ -1,6 +1,21 @@
 apis:
   user1-api:
-    root: ./docs/openapi.json
+    root: ./docs/user1-openapi.json
+
+extends:
+  - minimal
+
+theme:
+  openapi
+
+Görünüşe göre, `redocly.yaml` dosyasındaki yapı doğru. Ancak `theme:` ve `logo:` ayarları yanlış yerleştirilmiş gibi görünüyor. `logo` ayarının **doğrudan** `theme` içinde olması gerekiyor, ama şu an `theme:` içinde alt bir `theme:` tanımlanmış.
+
+Şunu düzeltmen yeterli olacaktır:
+
+```yaml
+apis:
+  user1-api:
+    root: ./docs/user1-openapi.json
 
 extends:
   - minimal
@@ -8,12 +23,11 @@ extends:
 theme:
   openapi:
     layout: stacked
-    theme:
-      colors:
-        primary:
-          main: '#1A73E8'  # user1'e özel renk (istersen değiştiririz)
-      logo:
-        gutter: 20px
+    colors:
+      primary:
+        main: '#1A73E8'  # user1'e özel renk (istersen değiştiririz)
+    logo:
+      gutter: 20px
 
 pages:
   - path: /
